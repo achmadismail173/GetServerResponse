@@ -82,9 +82,9 @@ function formatOut($list, $select)
     echo "+----------------------+----------+" . PHP_EOL;
     $no = 0;
     foreach ($list as $link) {
-        $hasil = get($link, $select)->select_status;
-        if ($hasil === 1) {
-            Savedata('valid.txt', $link);
+        $hasil = get($link, $select);
+        if ($hasil->select_status === 1) {
+            Savedata('valid.txt', $link." || ".$hasil->select_value);
             $no++;
         } else {
             Savedata('notvalid.txt', $link);
